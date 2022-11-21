@@ -1,33 +1,45 @@
-// // Homepage
-// function render() {
-//     const homeContainer = document.createElement('div').classList.add('homepage-container');
+import { content } from './index';
 
-//     // Header
-//     const header = document.createElement('div').classList.add('header-container');
-//     const title = document.createElement('h1').innerText('Los Pollos Hermanos');
-    
-//     homeContainer.appendChild(header);
-//     header.appendChild(title);
+function homeRender() {
+    const container = document.createElement('div');
+    container.classList.add('home-container');
 
-//     $content.appendChild(homeContainer);
-// }
+    const navBar = document.createElement('div');
+    navBar.classList.add('navigation-container');
 
-// export {render as renderHome};
+    const homeLink = document.createElement('a');
+    homeLink.setAttribute('href', '#');
+    homeLink.innerText = 'Home';
+    const menuLink = document.createElement('a');
+    menuLink.setAttribute('href', '#');
+    menuLink.innerText = 'Menu';
+    const contactLink = document.createElement('a');
+    contactLink.setAttribute('href', '#');
+    contactLink.innerText = 'Contact';
 
-import { $content, createHtmlElement } from "./index";
+    navBar.appendChild(homeLink);
+    navBar.appendChild(menuLink);
+    navBar.appendChild(contactLink);
+    container.appendChild(navBar);
 
-function render() {
-    const $main = document.createElement("main");
+    const header = document.createElement('h1');
+    header.innerText = 'Beyond Pasta';
+    container.appendChild(header);
+    header.classList.add('title');
 
-    const $bienvenidos = createHtmlElement(
-        "p",
-        null,
-        ["cursive", "golden"],
-        "Bienvenidos"
-    );
-    $main.appendChild($bienvenidos);
+    const footer = document.createElement('div');
+    footer.classList.add('footer-container');
+    const copyright = document.createElement('p');
+    copyright.innerText = 'Copyright 2022';
+    const author = document.createElement('a');
+    author.setAttribute('href', 'https://github.com/alessandroforchin');
+    author.innerText = 'alessandroforchin';
 
-    $content.appendChild($main);
+    footer.appendChild(copyright);
+    footer.appendChild(author);
+    container.appendChild(footer);
+
+    content.appendChild(container);
 }
 
-export { render as renderHome };
+export {homeRender};

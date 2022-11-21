@@ -1,24 +1,17 @@
-import { renderHome } from "./homepage";
+import { homeRender } from "./homepage";
+import { menuRender } from "./menu";
+import { contactRender } from "./contact";
 
-const $content = document.getElementById("content");
+const content = document.getElementById('content');
 
-function createHtmlElement(type, id, arrayClasses, content) {
-    const element = document.createElement(type);
-    if (id) element.id = id;
-    if (arrayClasses)
-        arrayClasses.forEach((myClass) => element.classList.add(myClass));
+homeRender();
 
-    if (content) element.innerText = content;
+document.addEventListener('click', (e) => {
+    const target = e.target.innerText;
 
-    return element;
-}
+    if (target === 'Home') homeRender();
+    if (target === 'Menu') menuRender();
+    if (target === 'Contact') contactRender();
+})
 
-function home() {
-    $content.innerHTML = "";
-    renderHome();
-
-}
-
-home();
-
-export { createHtmlElement, $content };
+export { content }
